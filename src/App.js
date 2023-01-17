@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import BusDetails from './components/BusDetails';
+import Home from './components/Home';
+import AllBuses from './components/AllBuses';
+import SingleBus from './components/SingleBus';
+import SharedLayout from './components/SharedLayout';
+import PassengerDetails from './components/PassengerDetails';
+import Buses from './components/Buses';
+import DisplayTicket from './components/DisplayTicket';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/allBuses" element={<AllBuses />} />
+          <Route path="/busDetails/:busID" element={<SingleBus />} />
+          <Route path="/passengerDetails" element={<PassengerDetails />} />
+          <Route path="/buses" element={<Buses />} />
+          <Route path="/displayTicket" element={<DisplayTicket />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
